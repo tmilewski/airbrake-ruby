@@ -131,7 +131,7 @@ module Airbrake
       self.queue_size = 100
       self.workers = 1
       self.code_hunks = true
-      self.logger = ::Logger.new(File::NULL).tap { |l| l.level = Logger::WARN }
+      self.logger = user_config[:logger] || ::Logger.new(File::NULL).tap { |l| l.level = Logger::WARN }
       self.project_id = user_config[:project_id]
       self.project_key = user_config[:project_key]
       self.host = 'https://api.airbrake.io'
